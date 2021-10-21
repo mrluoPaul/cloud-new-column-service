@@ -2,6 +2,7 @@ package com.mrluo.cloud.modules.app.service;
 
 import com.mrluo.cloud.modules.app.model.entity.Column;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mrluo.cloud.modules.app.model.vo.ColumnVO;
 
 /**
  * 新闻栏目表(Column)表服务接口
@@ -10,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-10-21 10:10:51
  */
 public interface IColumnService extends IService<Column> {
+    Boolean add(ColumnVO vo);
 }

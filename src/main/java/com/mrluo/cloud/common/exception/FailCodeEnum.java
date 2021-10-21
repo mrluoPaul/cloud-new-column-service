@@ -11,7 +11,8 @@ import com.baomidou.mybatisplus.core.enums.IEnum;
 public enum FailCodeEnum implements IEnum<String> {
     USER_NOT_EXIST("2001", "用户不存在"),
     USERNAME_REPEAT("2002", "用户名已被注册,请重新输入"),
-    EMAIL_REPEAT("2003", "邮箱已被注册,请重新输入");
+    EMAIL_REPEAT("2003", "邮箱已被注册,请重新输入"),
+    COLUMN_NAME_REPEAT("2004", "栏目标题重复,请重新输入栏目标题");
     private String value;
 
     private String msg;

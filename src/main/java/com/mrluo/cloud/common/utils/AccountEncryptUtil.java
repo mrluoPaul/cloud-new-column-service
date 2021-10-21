@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
  */
 public class AccountEncryptUtil {
 
-    private static String ENCRYPT_KEY = "mrluo";
+    private static String ENCRYPT_KEY = "mrluo754217510lj";
 
     private static AccountEncryptUtil instance = new AccountEncryptUtil();
 
@@ -49,14 +49,14 @@ public class AccountEncryptUtil {
     }
 
     public static String encrypt(String content) {
-        byte[] key = SecureUtil.generateDESKey(SymmetricAlgorithm.DESede.getValue(), ENCRYPT_KEY.getBytes()).getEncoded();
-        SymmetricCrypto des = new SymmetricCrypto(SymmetricAlgorithm.DESede, key);
-        return des.encryptHex(content);
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.AES.getValue(), ENCRYPT_KEY.getBytes()).getEncoded();
+        SymmetricCrypto aes = new SymmetricCrypto(SymmetricAlgorithm.AES, key);
+        return aes.encryptHex(content);
     }
 
     public static String decrypt(String content) {
-        byte[] key = SecureUtil.generateDESKey(SymmetricAlgorithm.DESede.getValue(), ENCRYPT_KEY.getBytes()).getEncoded();
-        SymmetricCrypto des = new SymmetricCrypto(SymmetricAlgorithm.DESede, key);
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.AES.getValue(), ENCRYPT_KEY.getBytes()).getEncoded();
+        SymmetricCrypto des = new SymmetricCrypto(SymmetricAlgorithm.AES, key);
         return des.decryptStr(content);
     }
 }

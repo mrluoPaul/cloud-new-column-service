@@ -7,8 +7,6 @@ import lombok.Data;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import java.util.Date;
-
 /**
  * 新闻栏目表(Column)实体类
  *

@@ -1,6 +1,7 @@
 package com.mrluo.cloud.security;
 
 
+import com.mrluo.cloud.common.exception.BusinessException;
 import com.mrluo.cloud.common.utils.localmap.NewsUserDetailDTO;
 import com.mrluo.cloud.common.utils.localmap.NewsUserSession;
 import com.mrluo.cloud.modules.app.model.entity.User;
@@ -24,7 +25,7 @@ public class AuthAuthenticationProvider extends AbstractUserDetailsAuthenticatio
     protected void additionalAuthenticationChecks(
             UserDetails userDetails, UsernamePasswordAuthenticationToken token) throws AuthenticationException {
         if (!userService.checkUsernamePassword(String.valueOf(token.getPrincipal()), String.valueOf(token.getCredentials()))) {
-            throw new AccountExpiredException("用户名密码不匹配");
+            throw new BusinessException("用户名密码不匹配");
         }
     }
 

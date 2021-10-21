@@ -61,12 +61,12 @@ public abstract class BaseEntity<T extends BaseEntity> extends Model<T> {
     @TableLogic(value = "0", delval = "1")
     private Boolean delFlag = Boolean.FALSE;
 
-    public Date getCreatedTime() {
-        return new Date();
+    public void setCreatedTime() {
+        this.createdDate = new Date();
     }
 
-    public Date getUpdatedTime() {
-        return new Date();
+    public void setUpdatedTime() {
+        this.updatedDate = new Date();
     }
 
     @Override

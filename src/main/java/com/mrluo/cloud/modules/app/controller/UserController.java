@@ -2,10 +2,10 @@ package com.mrluo.cloud.modules.app.controller;
 
 import com.mrluo.cloud.common.ResponseData;
 import com.mrluo.cloud.common.defs.NewsDefs;
-import com.mrluo.cloud.modules.app.model.dto.LoginResult;
 import com.mrluo.cloud.modules.app.model.vo.UserVO;
 import com.mrluo.cloud.modules.app.service.IUserService;
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @modified
  */
 @RestController
+@Validated
 @RequestMapping(UserController.PREFIX_URI)
 public class UserController {
     public static final String PREFIX_URI = NewsDefs.API_PREFIX_URI + "/user";
@@ -30,7 +31,7 @@ public class UserController {
 
     @PostMapping("register")
     @ApiOperation(value = "用户注册")
-    public ResponseData<LoginResult> register(@RequestBody @Validated UserVO vo, HttpServletRequest request) {
+    public ResponseData register(@Validated @RequestBody UserVO vo, HttpServletRequest request) {
         return ResponseData.success(userService.register(vo, request));
     }
 
