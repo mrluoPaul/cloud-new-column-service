@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.mrluo.cloud.common.utils.localmap.NewsSecurityUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -60,6 +61,13 @@ public abstract class BaseEntity<T extends BaseEntity> extends Model<T> {
     @TableLogic(value = "0", delval = "1")
     private Boolean delFlag = Boolean.FALSE;
 
+    public Date getCreatedTime() {
+        return new Date();
+    }
+
+    public Date getUpdatedTime() {
+        return new Date();
+    }
 
     @Override
     protected Serializable pkVal() {

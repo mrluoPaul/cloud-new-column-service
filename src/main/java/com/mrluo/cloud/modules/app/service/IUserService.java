@@ -1,8 +1,11 @@
 package com.mrluo.cloud.modules.app.service;
 
+import com.mrluo.cloud.modules.app.model.dto.LoginResult;
 import com.mrluo.cloud.modules.app.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mrluo.cloud.modules.app.model.vo.UserVO;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 /**
@@ -12,13 +15,9 @@ import java.util.Set;
  * @since 2021-10-21 10:10:51
  */
 public interface IUserService extends IService<User> {
-    boolean checkUsernamePassword(String valueOf, String valueOf1);
+    boolean checkUsernamePassword(String userName, String password);
 
-    String checkCenterAuthCode(String loginAppCode, String valueOf);
+    User retrieveByUserName(String userName);
 
-    boolean isDisabled(String usingUserName);
-
-    Set<String> permissionByAppCode(String loginAppCode, String usingUserName);
-
-    User retrieveByUserName(String loginAppCode, String usingUserName);
+    LoginResult register(UserVO vo, HttpServletRequest request);
 }

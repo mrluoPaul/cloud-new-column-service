@@ -22,21 +22,10 @@ public interface LMapCache<K, V> extends ConcurrentMap<K, V> {
 
     V put(K key, V value, long ttl, long maxIdle);
 
-    void fastPutIfAbsent(K key, V value);
-
     void fastPutIfAbsent(K key, V value, long ttl);
-
-    void fastPutIfAbsent(K key, V value, long ttl, long maxIdle);
 
     void putAll(java.util.Map<? extends K, ? extends V> map, long ttl);
 
-    void putAll(java.util.Map<? extends K, ? extends V> map, long ttl, long maxIdle);
-
-    void updateEntryExpiration(K key, long ttl, long maxIdle);
-
-    RLock getLock(K key);
-
     void addListener(MapEntryListener<K, V> mapEntryListener);
 
-    void removeListener(MapEntryListener<K, V> mapEntryListener);
 }

@@ -9,21 +9,7 @@ public class AuthLoginHolder {
         LOGIN_TYPE_HOLDER.set(loginType);
     }
 
-    static LoginType getLoginType() {
-        return LOGIN_TYPE_HOLDER.get();
-    }
-
-    static String getLoginAppCode() {
-        return LOGIN_APP_CODE_HOLDER.get();
-    }
-
-    public static boolean isUserCenterSsoAuthCode() {
-        return getLoginType() == LoginType.USER_CENTER_SSO_AUTH_CODE;
-    }
-
     public enum LoginType {
-        USERNAME_PASSWORD,
-
-        USER_CENTER_SSO_AUTH_CODE
+        USERNAME_PASSWORD
     }
 }

@@ -30,7 +30,7 @@ public class SwaggerAutoConfiguration {
         return new Docket(DocumentationType.OAS_30).apiInfo(ApiInfo.DEFAULT)
                 .globalRequestParameters(Collections.singletonList(new RequestParameterBuilder()
                         .name(NewsWebSessionService.TOKEN_HEADER_KEY)
-                        .description("Access Token").in(ParameterType.HEADER)
+                        .description("AccessToken").in(ParameterType.HEADER)
                         .required(false)
                         .build())).select()
                 .paths(PathSelectors.ant(serverProperties.getServlet().getContextPath()

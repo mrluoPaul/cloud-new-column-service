@@ -143,19 +143,6 @@ public class LMapCacheImpl<K, V> extends RedissonObject implements LMapCache<K, 
     }
 
     @Override
-    public void removeListener(MapEntryListener<K, V> listener) {
-        getListenerTopic().removeListener(listener);
-        MapEntryEvent.Type onType = listener.onType();
-        if (onType == null) {
-            for (MapEntryEvent.Type type : MapEntryEvent.Type.values()) {
-                listenerCounter.addAndGetAsync(type, 1);
-            }
-        } else {
-            listenerCounter.addAndGetAsync(onType, 1);
-        }
-    }
-
-    @Override
     public int size() {
         return (int) entryMap.keySet().stream().filter(this::isValid).count();
     }
@@ -235,23 +222,9 @@ public class LMapCacheImpl<K, V> extends RedissonObject implements LMapCache<K, 
 
         return oldValue;
     }
-
-    @Override
-    public void fastPutIfAbsent(K key, V value) {
-        fastPutIfAbsent(key, value, defaultTtl);
-    }
-
     @Override
     public void fastPutIfAbsent(K key, V value, long ttl) {
         fastPut(key, value, ttl, defaultIdle);
-    }
-
-    @Override
-    public void fastPutIfAbsent(K key, V value, long ttl, long maxIdle) {
-        if (isValid(key) && entryMap.containsKey(key)) {
-            return;
-        }
-        fastPut(key, value, ttl, maxIdle);
     }
 
     @Override
@@ -265,14 +238,6 @@ public class LMapCacheImpl<K, V> extends RedissonObject implements LMapCache<K, 
             fastPut(entry.getKey(), entry.getValue(), ttl);
         }
     }
-
-    @Override
-    public void putAll(Map<? extends K, ? extends V> map, long ttl, long maxIdle) {
-        for (Entry<? extends K, ? extends V> entry : map.entrySet()) {
-            fastPut(entry.getKey(), entry.getValue(), ttl, maxIdle);
-        }
-    }
-
 
     @Override
     public void fastPut(K key, V value) {
@@ -384,27 +349,6 @@ public class LMapCacheImpl<K, V> extends RedissonObject implements LMapCache<K, 
         return entryMap.entrySet().stream()
                 .peek(entry -> remainIdle(entry.getKey()))
                 .collect(Collectors.toSet());
-    }
-
-    @Override
-    public void updateEntryExpiration(K key, long ttl, long maxIdle) {
-        if (ttl > 0) {
-            ttlMap.fastPutAsync(key, System.currentTimeMillis() + ttl);
-        } else {
-            ttlMap.fastRemoveAsync(key);
-        }
-        if (maxIdle > 0) {
-            usingIdleMap.fastPutAsync(key, maxIdle);
-            maxIdleMap.fastPutAsync(key, System.currentTimeMillis() + maxIdle);
-        } else {
-            usingIdleMap.fastRemoveAsync(key);
-            maxIdleMap.fastRemoveAsync(key);
-        }
-    }
-
-    @Override
-    public RLock getLock(K key) {
-        return entryMap.getLock(key);
     }
 
     @Override

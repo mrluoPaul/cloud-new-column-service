@@ -14,3 +14,5 @@ spring:
     host: 118.121.58.171
     port: 6379
     password: 754217510lj
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*Mapper.xml

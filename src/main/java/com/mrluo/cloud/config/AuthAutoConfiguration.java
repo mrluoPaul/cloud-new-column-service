@@ -2,6 +2,7 @@ package com.mrluo.cloud.config;
 
 import com.mrluo.cloud.common.utils.localmap.Sha256PasswordEncoder;
 import com.mrluo.cloud.modules.app.controller.AuthController;
+import com.mrluo.cloud.modules.app.controller.UserController;
 import com.mrluo.cloud.security.AuthAuthenticationProvider;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableConfigurationProperties(AuthProperties.class)
-public class AuthAutoConfiguration implements SecurityConfigure{
+public class AuthAutoConfiguration implements SecurityConfigure {
     @Autowired
     private AuthAuthenticationProvider authAuthenticationProvider;
 
@@ -38,7 +39,7 @@ public class AuthAutoConfiguration implements SecurityConfigure{
     @SneakyThrows
     public boolean configure(HttpSecurity http) {
         http.authorizeRequests().antMatchers(
-                        AuthController.PREFIX_URI + "/**")
+                        AuthController.PREFIX_URI + "/**", UserController.PREFIX_URI + "/register")
                 .permitAll();
         return false;
     }

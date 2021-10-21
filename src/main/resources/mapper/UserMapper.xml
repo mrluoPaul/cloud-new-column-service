@@ -13,7 +13,14 @@
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
     </resultMap>
-	<sql id="Base_Column_List">
-      id, created_user, created_time, updated_time, updated_user, del_flag, username, password, email	  
+    <sql id="Base_Column_List">
+        id
+        , created_user, created_time, updated_time, updated_user, del_flag, username, password, email
     </sql>
+    <select id="queryUserByUserNameOrEmail" resultType="com.mrluo.cloud.modules.app.model.entity.User">
+        SELECT *
+        FROM `user`
+        WHERE username = #{userName}
+           or email = #{userName}
+    </select>
 </mapper>

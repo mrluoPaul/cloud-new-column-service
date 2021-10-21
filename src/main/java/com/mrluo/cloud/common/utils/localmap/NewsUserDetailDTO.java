@@ -1,14 +1,11 @@
 package com.mrluo.cloud.common.utils.localmap;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mrluo.cloud.common.defs.NewsDefs;
 import lombok.Getter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Getter
 public class NewsUserDetailDTO extends User {
