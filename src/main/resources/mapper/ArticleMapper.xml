@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrluo.cloud.modules.app.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="com.mrluo.cloud.modules.app.model.entity.Article">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedUser" column="updated_user" jdbcType="VARCHAR"/>
+        <result property="createdUser" column="created_user" jdbcType="VARCHAR"/>
+        <result property="delFlag" column="del_flag" jdbcType="OTHER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="columnId" column="column_id" jdbcType="INTEGER"/>
+    </resultMap>
+	<sql id="Base_Column_List">
+      id, created_time, updated_time, updated_user, created_user, del_flag, title, content, column_id	  
+    </sql>
+</mapper>
