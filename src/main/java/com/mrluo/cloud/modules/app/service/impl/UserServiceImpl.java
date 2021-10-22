@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -75,6 +76,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         User user = new User();
         BeanUtils.copyProperties(vo, user);
         user.setPassword(AccountEncryptUtil.encrypt(password));
+        Date date = new Date();
+        user.setUpdatedDate(date);
+        user.setCreatedDate(date);
         boolean save = this.save(user);
         LoginResult result = new LoginResult();
         if (save) {

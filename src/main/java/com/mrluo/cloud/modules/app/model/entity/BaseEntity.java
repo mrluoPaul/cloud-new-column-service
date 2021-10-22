@@ -61,14 +61,6 @@ public abstract class BaseEntity<T extends BaseEntity> extends Model<T> {
     @TableLogic(value = "0", delval = "1")
     private Boolean delFlag = Boolean.FALSE;
 
-    public void setCreatedTime() {
-        this.createdDate = new Date();
-    }
-
-    public void setUpdatedTime() {
-        this.updatedDate = new Date();
-    }
-
     @Override
     protected Serializable pkVal() {
         return id;

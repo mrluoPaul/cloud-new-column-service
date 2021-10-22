@@ -10,9 +10,13 @@ spring:
     url: jdbc:mysql://118.121.58.171:3306/news?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
     username: root
     password: 754217510lj
+    type: com.alibaba.druid.pool.DruidDataSource
   redis:
     host: 118.121.58.171
     port: 6379
     password: 754217510lj
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*Mapper.xml
+logging:
+  level:
+    com.mrluo.cloud.modules.app.mapper: debug
