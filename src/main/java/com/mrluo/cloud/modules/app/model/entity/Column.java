@@ -14,15 +14,15 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @since 2021-10-21 10:10:51
  */
 @Data
-@TableName("column")
+@TableName("column_article")
 public class Column extends BaseEntity<Column> {
     private static final long serialVersionUID = -97436067191105055L;
 
     /**
      * 栏目名
      */
-    @TableField("column_name")
-    private String columnName;
+    @TableField("name")
+    private String name;
 
     /**
      * 父级栏目id
@@ -31,10 +31,15 @@ public class Column extends BaseEntity<Column> {
     private Long parentId;
 
     /**
-     * 栏目类型 1 一级栏目  2 二级栏目
+     * 栏目类型 1 一级栏目  2 二级栏目 3 文章
      */
     @TableField("type")
     private Integer type;
+    /**
+     * 文章内容
+     */
+    @TableField("content")
+    private String content;
 
     @Override
     protected Serializable pkVal() {

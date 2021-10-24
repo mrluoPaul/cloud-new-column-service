@@ -40,22 +40,6 @@ public class SecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) {
-        SecurityConfigure securityConfigure = securityConfigureProvider.getIfAvailable();
-
-        if (securityConfigure != null && securityConfigure.configure(web)) {
-            return;
-        }
-
-        web.ignoring().antMatchers("/webjars/**");
-
-        web.ignoring().antMatchers("/swagger-ui/**",
-                "/v2/api-docs", "/v3/api-docs",
-                "/swagger-resources",
-                "/swagger-resources/**");
-    }
-
-    @Override
     public void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable().cors().disable()

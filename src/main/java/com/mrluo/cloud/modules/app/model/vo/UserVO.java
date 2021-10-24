@@ -1,5 +1,6 @@
 package com.mrluo.cloud.modules.app.model.vo;
 
+import io.swagger.annotations.ApiModel;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Data
 @Validated
+@ApiModel(value = "注册用户vo")
 public class UserVO implements Serializable {
     private static final long serialVersionUID = 249068183526416923L;
     @NotEmpty(message = "username不能为空")

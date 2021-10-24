@@ -1,5 +1,6 @@
 package com.mrluo.cloud.modules.app.model.vo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Data
 @Validated
+@ApiModel(value = "登录参数")
 public class LoginRequest implements Serializable {
     private static final long serialVersionUID = 1L;
     @NotEmpty

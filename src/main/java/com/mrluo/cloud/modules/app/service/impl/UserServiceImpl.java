@@ -14,6 +14,7 @@ import com.mrluo.cloud.modules.app.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mrluo.cloud.security.AuthLoginHolder;
 import com.mrluo.cloud.security.NewsWebSessionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -32,6 +33,7 @@ import java.util.Objects;
  */
 
 @Service("userService")
+@Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     @Autowired
     private NewsWebSessionService sessionService;

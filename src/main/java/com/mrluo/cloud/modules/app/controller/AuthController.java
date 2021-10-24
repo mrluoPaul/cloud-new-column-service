@@ -10,6 +10,7 @@ import com.mrluo.cloud.modules.app.model.dto.LoginResult;
 import com.mrluo.cloud.modules.app.model.vo.LoginRequest;
 import com.mrluo.cloud.security.AuthLoginHolder;
 import com.mrluo.cloud.security.NewsWebSessionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping(AuthController.PREFIX_URI)
 @Slf4j
+@Validated
+@Api(value = "登录管理")
 public class AuthController {
     public static final String PREFIX_URI = NewsDefs.API_PREFIX_URI + "/login";
     @Autowired

@@ -1,7 +1,9 @@
 package com.mrluo.cloud.config;
 
+import com.mrluo.cloud.common.defs.NewsDefs;
 import com.mrluo.cloud.common.utils.localmap.Sha256PasswordEncoder;
 import com.mrluo.cloud.modules.app.controller.AuthController;
+import com.mrluo.cloud.modules.app.controller.ColumnController;
 import com.mrluo.cloud.modules.app.controller.UserController;
 import com.mrluo.cloud.security.AuthAuthenticationProvider;
 import lombok.SneakyThrows;
@@ -39,7 +41,10 @@ public class AuthAutoConfiguration implements SecurityConfigure {
     @SneakyThrows
     public boolean configure(HttpSecurity http) {
         http.authorizeRequests().antMatchers(
-                        AuthController.PREFIX_URI + "/**", UserController.PREFIX_URI + "/register")
+                        AuthController.PREFIX_URI + "/**",
+                        UserController.PREFIX_URI + "/**",
+                        ColumnController.PREFIX_URI + "/tree",
+                        ColumnController.PREFIX_URI + "/detail")
                 .permitAll();
         return false;
     }
