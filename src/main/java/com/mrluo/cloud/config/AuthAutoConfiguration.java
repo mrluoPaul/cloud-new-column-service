@@ -1,6 +1,5 @@
 package com.mrluo.cloud.config;
 
-import com.mrluo.cloud.common.defs.NewsDefs;
 import com.mrluo.cloud.common.utils.localmap.Sha256PasswordEncoder;
 import com.mrluo.cloud.modules.app.controller.AuthController;
 import com.mrluo.cloud.modules.app.controller.ColumnController;
@@ -44,7 +43,12 @@ public class AuthAutoConfiguration implements SecurityConfigure {
                         AuthController.PREFIX_URI + "/**",
                         UserController.PREFIX_URI + "/**",
                         ColumnController.PREFIX_URI + "/tree",
-                        ColumnController.PREFIX_URI + "/detail")
+                        ColumnController.PREFIX_URI + "/detail",
+                        "/webjars/**",
+                        "/v2/**",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/api/**")
                 .permitAll();
         return false;
     }
