@@ -46,7 +46,7 @@ public class SecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .addFilterBefore(sessionService(), UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests().antMatchers(NewsDefs.FACADE_PREFIX_URI + "/**").permitAll();
+                .authorizeRequests().antMatchers(NewsDefs.API_PREFIX_URI + "/**").permitAll();
 
         SecurityConfigure securityConfigure = securityConfigureProvider.getIfAvailable();
 
