@@ -59,7 +59,7 @@ public class NewsWebSessionService extends OncePerRequestFilter {
             response.addHeader("Access-Control-Allow-Credentials", "true");
             response.addHeader("Access-Control-Allow-Origin", origin);
             response.addHeader("Access-Control-Allow-Methods", "*");
-            response.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,access_token");
+            response.addHeader("Access-Control-Allow-Headers", "Content-Type,X,AccessToken");
             response.getWriter().println("ok");
             return;
         }

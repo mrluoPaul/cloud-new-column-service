@@ -92,11 +92,11 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
     @Override
     @Transactional(rollbackFor = {Exception.class})
     public Boolean del(String id) {
-        Column column = this.getById(id);
+        Column column = this.getById(Long.valueOf(id));
         if (Objects.isNull(column)) {
             throw new BusinessException(FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL, FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL.getMsg());
         }
-        return this.removeById(id);
+        return this.removeById(Long.valueOf(id));
     }
 
     @Override
