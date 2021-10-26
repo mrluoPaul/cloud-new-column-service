@@ -47,7 +47,7 @@ public class ColumnController {
 
     @DeleteMapping("del/{id}")
     @ApiOperation(value = "删除栏目或者文章", httpMethod = "DELETE")
-    public ResponseData<Boolean> del(@PathVariable @NotNull(message = "主键id不能为空") Long id) {
+    public ResponseData<Boolean> del(@PathVariable @NotNull(message = "主键id不能为空") String id) {
         return ResponseData.success(columnService.del(id));
     }
 
@@ -59,7 +59,7 @@ public class ColumnController {
 
     @GetMapping("detail")
     @ApiOperation(value = "查询文章详情", httpMethod = "GET")
-    public ResponseData<ArticleVO> detail(@RequestParam @NotNull(message = "文章id不能为空") Long id) {
+    public ResponseData<ArticleVO> detail(@RequestParam @NotNull(message = "文章id不能为空") String id) {
         return ResponseData.success(columnService.detail(id));
     }
 }

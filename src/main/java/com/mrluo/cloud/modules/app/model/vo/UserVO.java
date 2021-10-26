@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class UserVO implements Serializable {
     private static final long serialVersionUID = 249068183526416923L;
     @NotEmpty(message = "username不能为空")
-    @Pattern(regexp = "[A-Za-z0-9]{5,20}", message = "用户名只能使用字母和数字，长度在5~20之间")
+    @Pattern(regexp = "[a-z0-9]{5,20}", message = "用户名只能使用字母和数字，长度在5~20之间")
     private String username;
     @NotEmpty(message = "password不能为空")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$", message = "密码长度必须在8~20之间,至少包含一个大写、一个小写、一个数字、一个特殊符号")

@@ -19,9 +19,7 @@ public class CorsConfig {
         //  你需要跨域的地址  注意这里的 127.0.0.1 != localhost
 
         // * 表示对所有的地址都可以访问
-        corsConfiguration.addAllowedOrigin("*");
-        // 表示只允许http://localhost:8080地址的访问（重点哦！！！！）
-        // corsConfiguration.addAllowedOrigin("http://localhost:8080");
+        corsConfiguration.addAllowedOriginPattern("*");
 
         //  跨域的请求头
         corsConfiguration.addAllowedHeader("*"); // 2

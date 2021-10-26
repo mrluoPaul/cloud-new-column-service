@@ -38,11 +38,11 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
         Date date = new Date();
         String name = vo.getName();
         Integer type = vo.getType();
-        Long parentId = vo.getParentId();
+        String parentId = vo.getParentId();
         LambdaQueryWrapper<Column> wrapper = new LambdaQueryWrapper<>();
         if (type == 1) {
             wrapper.eq(Column::getName, name);
-            wrapper.eq(Column::getParentId, parentId);
+            wrapper.eq(Column::getParentId, Long.valueOf(parentId));
             Column one = this.getOne(wrapper);
             if (!Objects.isNull(one)) {
                 throw new BusinessException(FailCodeEnum.COLUMN_NAME_REPEAT, FailCodeEnum.COLUMN_NAME_REPEAT.getMsg());
@@ -56,7 +56,7 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
                 throw new BusinessException(FailCodeEnum.COLUMN_NAME_IS_ERR, FailCodeEnum.COLUMN_NAME_IS_ERR.getMsg());
             }
         }
-        column.setParentId(parentId);
+        column.setParentId(Long.valueOf(parentId));
         column.setType(type);
         column.setContent(vo.getContent());
         column.setCreatedUser(username);
@@ -71,13 +71,13 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
     @Transactional(rollbackFor = {Exception.class})
     public Boolean edit(ColumnVO vo) {
         String username = NewsSecurityUtil.getCurrentUser().get().getUsername();
-        Long id = vo.getId();
+        String id = vo.getId();
         if (Objects.isNull(id)) {
             throw new BusinessException(FailCodeEnum.ID_IS_NULL, FailCodeEnum.ID_IS_NULL.getMsg());
         }
         String name = vo.getName();
         String content = vo.getContent();
-        Column column = this.getById(id);
+        Column column = this.getById(Long.valueOf(id));
         if (Objects.isNull(column)) {
             throw new BusinessException(FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL, FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL.getMsg());
         }
@@ -91,7 +91,7 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
 
     @Override
     @Transactional(rollbackFor = {Exception.class})
-    public Boolean del(Long id) {
+    public Boolean del(String id) {
         Column column = this.getById(id);
         if (Objects.isNull(column)) {
             throw new BusinessException(FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL, FailCodeEnum.COLUMN_OR_ARTICLE_IS_NULL.getMsg());
@@ -107,7 +107,7 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
             return new ArrayList<>();
         }
         for (TreeVO parent : tree) {
-            if (parent.getParentId() == 0) {
+            if (Long.parseLong(parent.getParentId()) == 0) {
                 finalList.add(parent);
             }
             for (TreeVO children : tree) {
@@ -121,7 +121,7 @@ public class ColumnServiceImpl extends ServiceImpl<ColumnMapper, Column> impleme
     }
 
     @Override
-    public ArticleVO detail(Long id) {
+    public ArticleVO detail(String id) {
         ArticleVO vo = new ArticleVO();
         Column column = this.getById(id);
         if (Objects.isNull(column)) {

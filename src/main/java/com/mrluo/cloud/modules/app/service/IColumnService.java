@@ -19,9 +19,9 @@ public interface IColumnService extends IService<Column> {
 
     Boolean edit(ColumnVO vo);
 
-    Boolean del(Long id);
+    Boolean del(String id);
 
     List<TreeVO> tree();
 
-    ArticleVO detail(Long id);
+    ArticleVO detail(String id);
 }

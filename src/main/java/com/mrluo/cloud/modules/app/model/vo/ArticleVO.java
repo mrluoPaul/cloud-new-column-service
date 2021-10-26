@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class ArticleVO implements Serializable {
     private static final long serialVersionUID = 8827343731262085857L;
     @ApiModelProperty("文章id")
-    private Long id;
+    private String id;
     @ApiModelProperty("文章名称")
     private String name;
     @ApiModelProperty("文章内容")

@@ -18,11 +18,11 @@ import java.util.List;
 public class TreeVO implements Serializable {
     private static final long serialVersionUID = 8956335837176454586L;
     @ApiModelProperty("主键id")
-    private Long id;
+    private String id;
     @ApiModelProperty("栏目或者文章名称")
     private String name;
     @ApiModelProperty("父级id")
-    private Long parentId;
+    private String parentId;
     @ApiModelProperty("父级名称")
     private String parentName;
     @ApiModelProperty("创建时间")

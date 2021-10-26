@@ -55,8 +55,9 @@ public class NewsWebSessionService extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         if (HttpMethod.resolve(request.getMethod()) == HttpMethod.OPTIONS) {
+            String origin = request.getHeader("Origin");
             response.addHeader("Access-Control-Allow-Credentials", "true");
-            response.addHeader("Access-Control-Allow-Origin", "*");
+            response.addHeader("Access-Control-Allow-Origin", origin);
             response.addHeader("Access-Control-Allow-Methods", "*");
             response.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,access_token");
             response.getWriter().println("ok");
